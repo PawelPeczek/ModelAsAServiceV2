@@ -253,4 +253,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+*.h5
+*.pth
+
+resources_manager_service/storage
+!resources_manager_service/storage/.gitkeep
+
 # End of https://www.gitignore.io/api/python,pycharm+iml,pycharm+all,jupyternotebooks

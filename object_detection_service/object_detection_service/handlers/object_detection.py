@@ -37,7 +37,7 @@ class ObjectDetection(Resource):
 
     def post(self) -> Response:
         if 'image' not in request.files:
-            return make_response({'msg': 'Field named "image" required.'}, 500)
+            return make_response({'msg': 'Field named "image" required.'}, 400)
         image = image_from_str(raw_image=request.files['image'].read())
         results = self.__infer_from_image(image=image)
         return make_response(results.to_dict(), 200)

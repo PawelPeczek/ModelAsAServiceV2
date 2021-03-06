@@ -1,0 +1,8 @@
+git+https://github.com/PawelPeczek/RetinaFaceNet.git@master
+torch==1.8.0
+torchvision==0.9.0
+dataclasses-json==0.5.2
+numpy==1.20.1
+opencv-python==4.5.1.48
+Flask==1.1.1
+Flask-RESTful==0.3.7
