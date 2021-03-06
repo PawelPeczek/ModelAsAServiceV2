@@ -1,0 +1,997 @@
+{
+	"info": {
+		"_postman_id": "2508a139-d93a-4504-b470-9e3fd1814c19",
+		"name": "ModelAsAServiceV2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "object_detection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/ppeczek/Pobrane/3.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50001/maas_workshop/v2/object_detection/detect",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50001",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"object_detection",
+						"detect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_image_to_resource_manager",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/ppeczek/Pobrane/3.jpg"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_image_to_resource_manager_no_image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_image_to_resource_manager_no_login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/ppeczek/Pobrane/3.jpg"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_image_from_resource_manager",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_image_from_resource_manager_no_login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_image_from_resource_manager_no_resource_identifier",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_image_from_resource_manager_no_file",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "resource_identifier",
+							"value": "dummy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/input_image_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"input_image_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_face_detection_results",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\"}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_face_detection_results_no_resources_indentifier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\"}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_face_detection_results_no_login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\"}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_face_detection_results_no_face_detection_results",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\"}",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingest_face_detection_results_wrong_json_format",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\", \"b\"}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_face_detection_results",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_face_detection_results_no_login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\"}",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch_face_detection_results_no_resource_identifier",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resource_identifier",
+							"value": "e4e06766-4802-42e2-a8e4-54d3f469cdfa",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "face_detection_results",
+							"value": "{\"some\": \"json\"}",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50002/maas_workshop/v2/resources_manager/face_detection_register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50002",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"resources_manager",
+						"face_detection_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_detection_via_gateway",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/ppeczek/Pobrane/3.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50000/maas_workshop/v2/gateway/detect_objects",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50000",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"gateway",
+						"detect_objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object_detection_via_gateway_no_image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/ppeczek/Pobrane/3.jpg",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50000/maas_workshop/v2/gateway/detect_objects",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50000",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"gateway",
+						"detect_objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "face_detection_via_gateway_initialize",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/home/ppeczek/Pobrane/3.jpg"
+						},
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50000/maas_workshop/v2/gateway/detect_faces",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50000",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"gateway",
+						"detect_faces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "face_detection_via_gateway_fetch",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "resource_identifier",
+							"value": "122e7a92-9d75-4db6-8925-b4c5fa7408ba",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50000/maas_workshop/v2/gateway/detect_faces",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50000",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"gateway",
+						"detect_faces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "face_detection_via_gateway_fetch_no_login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "resource_identifier",
+							"value": "514e756d-3250-4572-9eb0-a31f1c1318af",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50000/maas_workshop/v2/gateway/detect_faces",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50000",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"gateway",
+						"detect_faces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "face_detection_via_gateway_fetch_no_resource_identifier",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "renderowy",
+							"type": "text"
+						},
+						{
+							"key": "resource_identifier",
+							"value": "514e756d-3250-4572-9eb0-a31f1c1318af",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:50000/maas_workshop/v2/gateway/detect_faces",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "50000",
+					"path": [
+						"maas_workshop",
+						"v2",
+						"gateway",
+						"detect_faces"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
