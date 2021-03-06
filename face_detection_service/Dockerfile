@@ -10,7 +10,11 @@ COPY ./requirements.txt build/requirements.txt
 RUN python -m pip install -r build/requirements.txt
 RUN rm -r build
 
-COPY . /project
-RUN wget --no-check-certificate 'https://github.com/PawelPeczek/RetinaFaceNet/releases/download/v1.0/FaceNet_resnet_50.pth' \
-    -O project/face_detection_service/weights/weights.pth
+RUN mkdir /weights
+RUN wget --no-check-certificate 'https://github.com/PawelPeczek/RetinaFaceNet/releases/download/v1.0/weights' \
+    -O /weights/weights.pth
+
+COPY ./face_detection_service /project/face_detection_service
 WORKDIR project
+
+ENTRYPOINT ["python", "-m", "face_detection_service.app"]

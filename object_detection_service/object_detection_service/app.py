@@ -14,7 +14,6 @@ def create_api() -> Api:
     api = Api(app)
     model = torchvision.models.detection.retinanet_resnet50_fpn(pretrained=True)
     model.eval()
-    print(OBJECT_DETECTION_PATH)
     api.add_resource(
         ObjectDetection,
         OBJECT_DETECTION_PATH,

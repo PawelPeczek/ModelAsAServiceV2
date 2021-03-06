@@ -29,10 +29,12 @@ class FaceDetectionRegister(Resource):
         resource_path = os.path.join(
             PERSISTENCE_DIR, requester_login, resource_identifier, FACE_DETECTION_FILE_NAME
         )
-        if not os.path.isfile(resource_path):
+        if not os.path.isdir(os.path.dirname(resource_path)):
             return make_response(
                 {'msg': 'Incorrect resource identifiers.'}, 500
             )
+        if not os.path.isfile(resource_path):
+            return make_response({"status": "in_progress"}, 200)
         resource = safe_load_json(resource_path)
         return make_response(resource, 200)
 
