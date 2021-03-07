@@ -1,7 +1,8 @@
 import json
 import logging
 from functools import partial
-from typing import List
+from threading import Thread
+from typing import List, Any
 
 import pika
 from pika import spec
@@ -49,6 +50,24 @@ def on_face_detection(
     body: str,
     model: RetinaFaceNet
 ) -> None:
+    logging.info("Starting worker thread.")
+    worker_thread = Thread(
+        target=start_face_detection,
+        args=(channel, method, properties, body, model,)
+    )
+    worker_thread.daemon = True
+    worker_thread.start()
+    logging.info("Working thread started.")
+
+
+def start_face_detection(
+    channel: Channel,
+    method: spec.Basic.Deliver,
+    properties: spec.BasicProperties,
+    body: str,
+    model: RetinaFaceNet
+) -> None:
+    # https://stackoverflow.com/questions/51752890/how-to-disable-heartbeats-with-pika-and-rabbitmq
     try:
         message_content = json.loads(body)
         logging.info(f"Processing request: {message_content}")
@@ -66,10 +85,23 @@ def on_face_detection(
             request_identifier=message_content[RESOURCE_IDENTIFIER_FIELD],
             results=serialized_results
         )
-        channel.basic_ack(delivery_tag=method.delivery_tag)
+        send_ack = partial(ack_message, channel=channel, delivery_tag=method.delivery_tag)
+        channel.connection.add_callback_threadsafe(send_ack)
         logging.info(f"Results registered: {message_content}")
     except Exception as e:
         logging.error(f"Could not process image: {e}")
+
+
+def ack_message(channel: Channel, delivery_tag: Any):
+    """Note that `channel` must be the same pika channel instance via which
+    the message being ACKed was retrieved (AMQP protocol constraint).
+    """
+    if channel.is_open:
+        channel.basic_ack(delivery_tag)
+    else:
+        # Channel is already closed, so we can't ACK this message;
+        # log and/or do something that makes sense for your app in this case.
+        pass
 
 
 def _inference_results_to_dict(

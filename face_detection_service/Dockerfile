@@ -11,7 +11,7 @@ RUN python -m pip install -r build/requirements.txt
 RUN rm -r build
 
 RUN mkdir /weights
-RUN wget --no-check-certificate 'https://github.com/PawelPeczek/RetinaFaceNet/releases/download/v1.0/weights' \
+RUN wget --no-check-certificate 'https://github.com/PawelPeczek/RetinaFaceNet/releases/download/v1.0/FaceNet_resnet_50.pth' \
     -O /weights/weights.pth
 
 COPY ./face_detection_service /project/face_detection_service

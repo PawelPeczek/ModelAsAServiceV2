@@ -1,0 +1,51 @@
+version: "3.9"
+services:
+
+  gateway:
+    build:
+      context: ./gateway_service
+    image: maas/v2/gateway_service:latest
+    network_mode: host
+    depends_on:
+      - face_detection
+      - object_detection
+    volumes:
+      - ./gateway_service:/project
+    restart: always
+
+  face_detection:
+    build:
+      context: ./face_detection_service
+    image: maas/v2/face_detection_service:latest
+    network_mode: host
+    depends_on:
+      - rabbit
+      - resource_manager
+    volumes:
+      - ./face_detection_service:/project
+    deploy:
+      replicas: 1
+    restart: always
+
+  rabbit:
+    image: rabbitmq:3-management
+    network_mode: host
+    restart: always
+
+  resource_manager:
+    build:
+      context: ./resources_manager_service
+    image: maas/v2/resource_manager_service:latest
+    network_mode: host
+    volumes:
+      - ./resources_manager_service:/project
+    restart: always
+
+  object_detection:
+    build:
+      context: ./object_detection_service
+    image: maas/v2/object_detection_service:latest
+    network_mode: host
+    volumes:
+      - ./object_detection_service:/project
+    restart: always

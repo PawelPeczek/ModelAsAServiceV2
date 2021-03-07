@@ -13,8 +13,3 @@ To run playground use the following command:
 ```bash
 docker run --network host -it maas/v2/playground:latest
 ```
-
-Then type:
-```bash
-docker:/project# jupyter notebook --allow-root
-```
